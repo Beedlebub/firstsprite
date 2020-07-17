@@ -1,3 +1,10 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    myEnemy.destroy()
+})
+sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+    pause(500)
+    spawnEnemy()
+})
 function spawnEnemy () {
     myEnemy = sprites.create(img`
 . . . . . . . . . . . . . . . . . . . . . . . . 
@@ -29,13 +36,6 @@ f b b b b f 2 2 2 2 f d 4 . . . . . . . . . . .
     myEnemy.setPosition(78, 56)
     myEnemy.follow(mySprite, 10)
 }
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    myEnemy.destroy()
-})
-sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
-    pause(500)
-    spawnEnemy()
-})
 let myEnemy: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
